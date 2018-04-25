@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ProjectItem from './ProjectItem';
 
 class Projects extends Component {
@@ -8,7 +9,7 @@ class Projects extends Component {
     if(this.props.projects) {
         projectsItems = this.props.projects.map(project => {
             return (
-                <ProjectItem key={project.id} name={project.name} category={project.category} />
+                <ProjectItem deleteProject={this.props.deleteProject} key={project.id} project={project} />
             )
         })
     
@@ -25,6 +26,11 @@ class Projects extends Component {
       </div>
     );
   }
-}    
+} 
+
+Projects.propTypes = {
+    projects: PropTypes.array,
+    deleteProject: PropTypes.func
+}
 
 export default Projects;
